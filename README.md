@@ -10,6 +10,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Tips](#tips)
 - [License](#license)
 
 ## Install
@@ -25,6 +26,11 @@ You can also use the [interface online](https://www.avonture.be/marknotes_md2htm
 3. Click on the Copy to clipboard button so you can paste the HTML rendering in an email f.i.
 
 ![demo.gif](image/demo.gif)
+
+## Tips
+
+- You can type something like `==important part==` to put that section in a highlighted section.
+- When the markdown content start with a YAML block, that block is ignored during the HTML conversion
 
 ## License
 
