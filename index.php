@@ -35,6 +35,7 @@ $md =
     "| --- | --- |\n" .
     "| Row 1-1 | Row 1-2 |\n" .
     "| Row 2-1 | Row 2-2 |\n\n" .
+    "Demo of `html` source code:\n\n" .
     "```html\n" .
     "<div class=\"col-sm\">\n" .
     "   <title>Marknotes - MD2HTML - Quick convert markdown to HTML</title>\n" .
@@ -186,9 +187,7 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     });
                 }
 
-                $('#btnConvert').click(function(e)  {
-
-                    e.stopImmediatePropagation();
+                function convertMD2HTML() {
 
                     var $markdown = $('#editor').val();
 
@@ -203,7 +202,12 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     } catch (error) {
                     }
 
-                    var $HTML = marked($markdown, { sanitize: true });
+                    var $HTML = marked($markdown, { 
+                        sanitize: true,
+                        gfm: true, 
+                        smartypants: true, 
+                        tables: true 
+                    });
 
                     // Handle a few custom tags
                     //   ==WORD==       will put this word in a highlighted span
@@ -224,6 +228,18 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     // Finally show the copy clipboard button and the HTML result
                     $('.btnClipboard').removeClass('d-none');
                     $('#HTML').removeClass('d-none');
+
+                    return;
+                }
+
+                $("#editor").on('change keyup paste', function(e) {                    
+                    e.stopImmediatePropagation();
+                    convertMD2HTML();
+                });
+                
+                $('#btnConvert').click(function(e)  {
+                    e.stopImmediatePropagation();
+                    convertMD2HTML();
                 });
             });
         </script>
