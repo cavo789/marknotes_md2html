@@ -162,6 +162,9 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                 <button type="button" id="btnConvert" class="btn btn-primary">
                     Convert
                 </button> 
+                <button class="btnToggle btn btn-success">
+                    Toggle editor
+                </button>
                 <button disabled="disabled" class="btnClipboard d-none btn btn-success" data-clipboard-target="#HTML">
                     Copy to clipboard
                 </button>
@@ -241,6 +244,12 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     e.stopImmediatePropagation();
                     convertMD2HTML();
                 });
+
+                $('.btnToggle').click(function(e)  {
+                    e.stopImmediatePropagation();
+                    $('#editor').parent().toggleClass('d-none');
+                });
+
             });
         </script>
     </body>
