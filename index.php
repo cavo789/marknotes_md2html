@@ -109,14 +109,14 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     <div class="row">
                         <div class="col-sm" v-if="showEditor">
                             <textarea class="form-control" rows="20" v-model="Markdown"></textarea>
-                            <!-- Textarea required for the Copy into clipboard so we can get the HTML code-->
-                            <textarea id="HTML_CODE">{{ HTML }}</textarea>
                         </div>
                         <div class="col-sm">
                             <article id="HTML" v-html="HTML" class="markdown-body"><article>
                         </div>
                     </div>
                 </div>
+                <!-- Textarea required for the Copy into clipboard so we can get the HTML code-->
+                <textarea id="HTML_CODE">{{ HTML }}</textarea>
             </main>
             <footer class="footer">
                 <div class="buttons container-fluid">
