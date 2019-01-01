@@ -216,7 +216,7 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                         "</div>\n" +
                         "```\n\n" +
                         "```php\n" +
-                        "<?php\n" +
+                        "<\?php\n" +
                         "   echo \$variable;\n" +
                         "```\n",
                     showEditor: true
