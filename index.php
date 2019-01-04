@@ -103,7 +103,21 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <div id="app">
             <main role="main" class="container-fluid">
                 <div class="container-fluid">
-                    <how-to-use demo="https://raw.githubusercontent.com/cavo789/marknotes_md2html/master/image/demo.gif"></how-to-use>                
+                    <how-to-use demo="https://raw.githubusercontent.com/cavo789/marknotes_md2html/master/image/demo.gif">                    
+                        <ol>
+                            <li>Type the markdown code in the text area here below</li>
+                            <li>Click on the Convert button to see the HTML rendering 
+                                at the right side</li>
+                            <li>If looks fine, click on the Copy to clipboard button 
+                                so you can f.i. paste the rendering in an email</li>
+                        </ol>
+                        <h2>Tips</h2>
+                        <ul>
+                            <li>Would you like to draw attention to some of your content? 
+                                Add an equal double before and after like in 
+                                <pre>==Please read this==</pre></li>
+                        </ul>
+                    </how-to-use>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
@@ -170,23 +184,10 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     `<details>
                         <summary>How to use?</summary>
                         <div class="row">
-                                <div class="col-sm">
-                                    <ol>
-                                        <li>Type the markdown code in the text area here below</li>
-                                        <li>Click on the Convert button to see the HTML rendering 
-                                            at the right side</li>
-                                        <li>If looks fine, click on the Copy to clipboard button 
-                                            so you can f.i. paste the rendering in an email</li>
-                                    </ol>
-                                    <h2>Tips</h2>
-                                    <ul>
-                                        <li>Would you like to draw attention to some of your content? 
-                                            Add an equal double before and after like in 
-                                            <pre>==Please read this==</pre></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm"><img v-bind:src="demo" alt="Demo"></div>
+                            <div class="col-sm">
+                                <slot></slot>
                             </div>
+                            <div class="col-sm"><img v-bind:src="demo" alt="Demo"></div>
                         </div>
                     </details>`
             });
