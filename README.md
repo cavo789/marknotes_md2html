@@ -9,8 +9,10 @@
 ## Table of Contents
 
 -   [Install](#install)
+-   [Build Setup](#build-setup)
 -   [Usage](#usage)
 -   [Tips](#tips)
+-   [Author](#author)
 -   [License](#license)
 
 ## Install
