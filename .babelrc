@@ -1,0 +1,33 @@
+{
+    "presets": [
+        [
+            "env",
+            {
+                "modules": false
+            }
+        ],
+        "stage-3"
+    ],
+    "plugins": [
+        [
+            "prismjs",
+            {
+                "languages": [
+                    "css",
+                    "ini",
+                    "javascript",
+                    "json",
+                    "markdown",
+                    "markup",
+                    "php",
+                    "sql"
+                ],
+                "plugins": [
+                    "line-numbers"
+                ],
+                "theme": "default",
+                "css": true
+            }
+        ]
+    ]
+}

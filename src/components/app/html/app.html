@@ -1,0 +1,27 @@
+<div>
+    <github_corner v-if="isVisible" :github_url='github_url' />
+    <apptitle v-if="isVisible" :title='app_title' :subtitle='app_subtitle'></apptitle>
+    <howtouse v-if="isVisible" :title='howto_title' :imgsrc='howto_imgsrc'>
+        <ol>
+            <li>Type the markdown code in the text area here below</li>
+            <li>
+                Click on the Convert button to see the HTML rendering
+                at the right side
+            </li>
+            <li>
+                If looks fine, click on the Copy to clipboard button
+                so you can f.i. paste the rendering in an email
+            </li>
+        </ol>
+        <h2>Tips</h2>
+        <ul>
+            <li>
+                Would you like to draw attention to some of your content?
+                Add an equal double before and after like in
+                <pre>==Please read this==</pre>
+            </li>
+        </ul>
+    </howtouse>
+    <editor @toggleVisibility="toggleVisibility" />
+    <appfooter v-if="isVisible" />
+</div>

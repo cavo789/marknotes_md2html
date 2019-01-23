@@ -1,0 +1,32 @@
+<div>
+    <div class="columns">
+        <div class="column" v-if="showeditor">
+            <textarea class="textarea" rows="20" v-model="markdown"></textarea>
+        </div>
+        <div class="column">
+            <article id="HTML" v-html="HTML" class="markdown-body">
+            </article>
+        </div>
+    </div>
+    <div>
+        <!-- Textarea required for the Copy into clipboard so we can get the HTML code-->
+        <textarea id="HTML_CODE">{{ HTML }}</textarea>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="buttons content">
+                <button v-if="HTML" title="Show/Hide the editor" class="btnToggle button is-small is-info " @click="doToggle">
+                    Show/Hide editor
+                </button>
+                <button :disabled="clipboardDisabled==1" v-if="HTML" title="Copy the rendered HTML in the clipboard"
+                    class="btnClipboard button is-success is-small" data-clipboard-target="#HTML">
+                    Copy
+                </button>
+                <button :disabled="clipboardDisabled==1" v-if="HTML" title="Copy the HTML source code (with tags) in the clipboard"
+                    class="btnClipboard button is-success is-small" data-clipboard-target="#HTML_CODE">
+                    Copy source
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
