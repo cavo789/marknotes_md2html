@@ -19,7 +19,7 @@
 
 Clone this repository or click on the `[Clone or download](https://github.com/cavo789/marknotes_md2html/archive/master.zip)` green button and get a copy of the program.
 
-You can also use the [interface online](https://www.avonture.be/marknotes_md2html) without installing anything.
+You can also use the [interface online](https://md2html.avonture.be/) without installing anything.
 
 ## Build Setup
 

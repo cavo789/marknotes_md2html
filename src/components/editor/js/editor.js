@@ -1,13 +1,13 @@
 // Marked for conversion from MD to HTML
-import marked from 'marked/marked.min.js';
+import marked from "marked/marked.min.js";
 
 // Copy in clipboard
-import ClipboardJS from 'clipboard';
+import ClipboardJS from "clipboard";
 
 // Import babel-plugin-prismjs
 // The list of supported languages can be retrieved in the
 // /.babelrc file (in the root folder)
-import Prism from 'prismjs';
+import Prism from "prismjs";
 
 // Primer-css is the new name for github-markdown
 import "primer-css/build/build.css";
@@ -23,14 +23,15 @@ export default {
         MARKDOWN: {
             type: String,
             required: false,
-            default: "---\n" +
+            default:
+                "---\n" +
                 "title: 'A title'\n" +
                 "---\n\n" +
                 "# Test\n\n" +
                 "> This is a demo text\n\n" +
                 "![banner](https://raw.githubusercontent.com/cavo789/marknotes_md2html/master/image/banner.jpg)\n\n" +
                 "Lorem ipsum dolor ==sit amet==, consectetur *adipiscing* ==elit==.\n" +
-                "[Demo site](https://www.avonture.be/marknotes_md2html/)\n\n" +
+                "[Demo site](https://md2html.avonture.be/)\n\n" +
                 "```sql\n" +
                 "SELECT ... FROM ... WHERE ... ORDER BY ...\n" +
                 "```\n\n" +
@@ -40,27 +41,27 @@ export default {
                 "| Row 2-1 | Row 2-2 |\n\n" +
                 "Demo of `html` source code:\n\n" +
                 "```html\n" +
-                "<div class=\"col-sm\">\n" +
+                '<div class="col-sm">\n' +
                 "   <title>Marknotes - MD2HTML - Quick convert markdown to HTML</title>\n" +
                 "</div>\n" +
                 "```\n\n" +
                 "```php\n" +
-                "<\?php\n" +
-                "   echo \$variable;\n" +
+                "<?php\n" +
+                "   echo $variable;\n" +
                 "```\n"
         }
     },
-    data: function () {
+    data: function() {
         return {
             markdown: this.MARKDOWN,
             showeditor: this.showEditor,
             clipboardDisabled: 1
-        }
+        };
     },
     computed: {
         HTML() {
-            if (this.markdown == '') {
-                return '';
+            if (this.markdown == "") {
+                return "";
             }
 
             var $markdown = this.markdown;
@@ -72,10 +73,9 @@ export default {
             //      ---
             // Just remove it
             try {
-                $markdown = $markdown.replace(/\s*^-{3}[.\S\s]*^-{3}/mg, "");
+                $markdown = $markdown.replace(/\s*^-{3}[.\S\s]*^-{3}/gm, "");
                 $markdown = $markdown.trim();
-            } catch (error) {
-            }
+            } catch (error) {}
 
             var $HTML = marked($markdown, {
                 sanitize: true,
@@ -86,11 +86,16 @@ export default {
 
             // Handle a few custom tags
             //   ==WORD==    will put this word in a highlighted span
-            $HTML = $HTML.replace(/([^=]*)==([^=]*)==([^=]*)/g,
-                "$1<span class='highlight'>$2</span>$3");
+            $HTML = $HTML.replace(
+                /([^=]*)==([^=]*)==([^=]*)/g,
+                "$1<span class='highlight'>$2</span>$3"
+            );
 
             // Add classes to tables
-            $HTML = $HTML.replace('<table>', '<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">');
+            $HTML = $HTML.replace(
+                "<table>",
+                '<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">'
+            );
 
             // Strange: need a timeout to give "time" to Prism to
             // highlight the HTML content
@@ -103,30 +108,30 @@ export default {
     },
     methods: {
         doToggle(e) {
-            this.showeditor = !(this.showeditor);
-            this.$emit('toggleVisibility', e);
+            this.showeditor = !this.showeditor;
+            this.$emit("toggleVisibility", e);
         }
     },
     watch: {
-        HTML: function (val) {
+        HTML: function(val) {
             // Call PrismJS if HTML has changed
             Prism.highlightAll();
         }
     },
     render() {
-        alert('rendering');
+        alert("rendering");
     },
     mounted() {
         // If ClipboardJS library is correctly loaded,
-        if (typeof ClipboardJS === 'function') {
+        if (typeof ClipboardJS === "function") {
             // Remove the disabled attribute
             this.clipboardDisabled = 0;
 
             // Handle the click event on buttons
-            var clipboard = new ClipboardJS('.btnClipboard');
+            var clipboard = new ClipboardJS(".btnClipboard");
 
-            clipboard.on('success', function (e) {
-                alert('Copied!');
+            clipboard.on("success", function(e) {
+                alert("Copied!");
                 e.clearSelection();
             });
         }
