@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     entry: './src/main.js',
@@ -8,6 +9,9 @@ module.exports = {
         publicPath: 'dist/',
         filename: 'build.js'
     },
+    plugins: [
+        new VueLoaderPlugin()
+    ],
     module: {
         rules: [
             {
@@ -65,12 +69,12 @@ if (process.env.NODE_ENV === 'production') {
                 NODE_ENV: '"production"'
             }
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
-            }
-        }),
+        //new webpack.optimize.UglifyJsPlugin({
+        //    sourceMap: true,
+        //    compress: {
+        //        warnings: false
+        //    }
+        //}),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })

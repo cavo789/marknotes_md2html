@@ -12,6 +12,7 @@ import Prism from "prismjs";
 // Primer-css is the new name for github-markdown
 import "primer-css/build/build.css";
 
+
 export default {
     name: "editor",
     props: {
@@ -32,6 +33,24 @@ export default {
                 "![banner](https://raw.githubusercontent.com/cavo789/marknotes_md2html/master/image/banner.jpg)\n\n" +
                 "Lorem ipsum dolor ==sit amet==, consectetur *adipiscing* ==elit==.\n" +
                 "[Demo site](https://md2html.avonture.be/)\n\n" +
+                "```json\n" +
+                "{\n" +
+                "    'name': 'John',\n" +
+                "    'age': 30,\n" +
+                "    'cars': [\n" +
+                "        'Ford',\n" +
+                "        'BMW',\n" +
+                "        'Fiat'\n" +
+                "    ],\n" +
+                "    'places': [\n" +
+                "        'Africa',\n" +
+                "        'America',\n" +
+                "        'Asia',\n" +
+                "        'Australia'\n" +
+                "    ]\n" +
+                "}\n" +
+                "```\n" +
+                "Simple SQL statement\n" +
                 "```sql\n" +
                 "SELECT ... FROM ... WHERE ... ORDER BY ...\n" +
                 "```\n\n" +
@@ -51,7 +70,7 @@ export default {
                 "```\n"
         }
     },
-    data: function() {
+    data: function () {
         return {
             markdown: this.MARKDOWN,
             showeditor: this.showEditor,
@@ -75,7 +94,7 @@ export default {
             try {
                 $markdown = $markdown.replace(/\s*^-{3}[.\S\s]*^-{3}/gm, "");
                 $markdown = $markdown.trim();
-            } catch (error) {}
+            } catch (error) { }
 
             var $HTML = marked($markdown, {
                 sanitize: true,
@@ -113,7 +132,7 @@ export default {
         }
     },
     watch: {
-        HTML: function(val) {
+        HTML: function (val) {
             // Call PrismJS if HTML has changed
             Prism.highlightAll();
         }
@@ -130,7 +149,7 @@ export default {
             // Handle the click event on buttons
             var clipboard = new ClipboardJS(".btnClipboard");
 
-            clipboard.on("success", function(e) {
+            clipboard.on("success", function (e) {
                 alert("Copied!");
                 e.clearSelection();
             });
