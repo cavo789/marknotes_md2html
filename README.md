@@ -1,6 +1,6 @@
-![banner](image/banner.jpg)
-
 # marknotes_md2xls
+
+![Banner](./banner.svg)
 
 > Quick markdown to HTML converter
 
